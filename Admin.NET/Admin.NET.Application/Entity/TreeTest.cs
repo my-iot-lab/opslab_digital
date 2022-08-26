@@ -1,13 +1,10 @@
-﻿using Admin.NET.Application.Const;
-
-namespace Admin.NET.Application.Entity;
+﻿namespace Admin.NET.Application.Entity;
 
 /// <summary>
 /// 多库代码生成树形测试表
 /// </summary>
 [SugarTable("d_treetest", "多库代码生成树形测试表")]
-[Tenant(TestConst.ConfigId)]
-public class TreeTest : EntityBase
+public class TreeTest : BizEntityBase
 {
     /// <summary>
     /// 名称
@@ -17,11 +14,11 @@ public class TreeTest : EntityBase
     /// <summary>
     /// 父级
     /// </summary>
-    public long ParentId { get; set; }//父级字段
+    public long ParentId { get; set; }
 
     /// <summary>
     /// Child
     /// </summary>
-    [SqlSugar.SugarColumn(IsIgnore = true)]
+    [SugarColumn(IsIgnore = true)]
     public List<TreeTest> Child { get; set; }
 }

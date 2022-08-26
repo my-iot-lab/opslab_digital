@@ -153,6 +153,7 @@ public class SysTenantService : IDynamicApiController, ITransient
         // 超级管理员所在租户为默认租户
         if (users.Any(u => u.UserType == UserTypeEnum.SuperAdmin))
             throw Oops.Oh(ErrorCodeEnum.D1023);
+
         var entity = await _tenantRep.GetFirstAsync(u => u.Id == input.Id);
         await _tenantRep.DeleteAsync(entity);
 
@@ -189,7 +190,9 @@ public class SysTenantService : IDynamicApiController, ITransient
         await _tenantRep.Context.Updateable(entity).IgnoreColumns(true).ExecuteCommandAsync();
 
         var tenantAdminUser = await GetTenantAdminUser(input.Id);
-        if (tenantAdminUser == null) return;
+        if (tenantAdminUser == null) 
+            return;
+
         tenantAdminUser.UserName = entity.AdminName;
         await _userRep.Context.Updateable(tenantAdminUser).UpdateColumns(u => new { u.UserName }).ExecuteCommandAsync();
     }
@@ -224,7 +227,9 @@ public class SysTenantService : IDynamicApiController, ITransient
     public async Task GrantMenu(RoleMenuInput input)
     {
         var tenantAdminUser = await GetTenantAdminUser(input.Id);
-        if (tenantAdminUser == null) return;
+        if (tenantAdminUser == null) 
+            return;
+
         var roleIds = await _sysUserRoleService.GetUserRoleIdList(tenantAdminUser.Id);
         input.Id = roleIds[0]; // 重置租户管理员角色Id
         await _sysRoleMenuService.GrantRoleMenu(input);
@@ -239,7 +244,9 @@ public class SysTenantService : IDynamicApiController, ITransient
     public async Task<List<SysMenu>> OwnMenu([FromQuery] QueryeTenantInput input)
     {
         var tenantAdminUser = await GetTenantAdminUser(input.Id);
-        if (tenantAdminUser == null) return new List<SysMenu>();
+        if (tenantAdminUser == null) 
+            return new(0);
+
         var roleIds = await _sysUserRoleService.GetUserRoleIdList(tenantAdminUser.Id);
         var tenantAdminRoleId = roleIds[0]; // 租户管理员角色Id
         return await _sysRoleMenuService.GetRoleMenu(new List<long> { tenantAdminRoleId });

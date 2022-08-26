@@ -1,13 +1,10 @@
-﻿using Admin.NET.Application.Const;
-
-namespace Admin.NET.Application.Entity;
+﻿namespace Admin.NET.Application.Entity;
 
 /// <summary>
 /// 自己业务数据表
 /// </summary>
 [SugarTable("d_test", "自己业务数据表")]
-[Tenant(TestConst.ConfigId)]
-public class Test : EntityBase
+public class Test : BizEntityBase
 {
     /// <summary>
     /// 姓名

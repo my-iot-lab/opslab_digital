@@ -128,8 +128,8 @@ public class AuthService : IDynamicApiController, ITransient
             Avatar = user.Avatar,
             Desc = user.Introduction,
             OrgId = user.OrgId,
-            OrgName = user.SysOrg != null ? user.SysOrg.Name : "",
-            OrgLevel = user.SysOrg != null ? user.SysOrg.Level : "",
+            OrgName = user.SysOrg?.Name ?? "",
+            OrgLevel = user.SysOrg?.Level ?? "",
             Roles = roles.Select(u => new LoginRole
             {
                 RoleName = u.Name,

@@ -75,10 +75,10 @@ public class DataBaseManager : IDynamicApiController, ITransient
     [HttpGet("/dataBase/columnInfoList")]
     public List<DbColumnInfoOutput> GetColumnInfosByTableName(string tableName, string configId = SqlSugarConst.ConfigId)
     {
-        var provider = _db.AsTenant().GetConnectionScope(configId);
         if (string.IsNullOrWhiteSpace(tableName))
             return new List<DbColumnInfoOutput>();
 
+        var provider = _db.AsTenant().GetConnectionScope(configId);
         return provider.DbMaintenance.GetColumnInfosByTableName(tableName, false).Adapt<List<DbColumnInfoOutput>>();
     }
 
@@ -101,12 +101,13 @@ public class DataBaseManager : IDynamicApiController, ITransient
     [HttpPost("/table/add")]
     public void TableAdd(DbTableInfoInput input)
     {
-        var provider = _db.AsTenant().GetConnectionScope(input.ConfigId);
-        var columns = new List<DbColumnInfo>();
         if (input.DbColumnInfoList == null || !input.DbColumnInfoList.Any())
         {
             throw Oops.Oh(ErrorCodeEnum.db1000);
         }
+
+        var provider = _db.AsTenant().GetConnectionScope(input.ConfigId);
+        var columns = new List<DbColumnInfo>();
         input.DbColumnInfoList.ForEach(m =>
         {
             columns.Add(new DbColumnInfo
@@ -175,6 +176,7 @@ public class DataBaseManager : IDynamicApiController, ITransient
         DbTableInfo dbTableInfo = provider.DbMaintenance.GetTableInfoList(false).FirstOrDefault(m => m.Name == input.TableName);
         if (dbTableInfo == null)
             throw Oops.Oh(ErrorCodeEnum.db1001);
+
         List<DbColumnInfo> dbColumnInfos = provider.DbMaintenance.GetColumnInfosByTableName(input.TableName, false);
 
         if (input.BaseClassName.Contains("EntityTenant"))

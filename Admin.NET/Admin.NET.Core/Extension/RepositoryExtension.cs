@@ -225,7 +225,7 @@ public static class RepositoryExtension
     private static string GetTableName<T>(IAdo ado)
     {
         var entityType = typeof(T);
-        var attr = entityType.GetCustomAttribute<TenantAttribute>();
+        var attr = entityType.GetCustomAttribute<TenantAttribute>(true); // 可从父类对象中获取
         var configId = attr == null ? SqlSugarConst.ConfigId : attr.configId.ToString();
         var tableName = entityType.GetCustomAttribute<SugarTable>().TableName;
 

@@ -2,19 +2,19 @@
   "$schema": "https://gitee.com/dotnetchina/Furion/raw/net6/schemas/v3/furion-schema.json",
 
   "DbConnection": {
-    "EnableInitTable": true, // 启用初始化库表
+    "EnableInitTable": false, // 启用初始化库表
     "EnableDiffLog": false, // 启用库表差异日志
     "ConnectionConfigs": [ // 默认第一个为主库
       {
-        "ConfigId": "Dilon",
-        "DbType": "Sqlite", // MySql、SqlServer、Sqlite、Oracle、PostgreSQL、Dm、Kdbndp、Oscar、MySqlConnector、Access
-        "ConnectionString": "DataSource=./Admin.NET.db", // DataSource=C:\\db\\Admin.NET.db
+        "ConfigId": "System",
+        "DbType": "MySql", // MySql、SqlServer、Sqlite、Oracle、PostgreSQL、Dm、Kdbndp、Oscar、MySqlConnector、Access
+        "ConnectionString": "Data Source=localhost;Database=mesadmin_sys;User ID=root;Password=noke@1234;pooling=true;sslmode=none;CharSet=utf8mb4;",
         "IsAutoCloseConnection": true
       },
       {
-        "ConfigId": "Test",
-        "DbType": "Sqlite",
-        "ConnectionString": "DataSource=./Test.db",
+        "ConfigId": "Business",
+        "DbType": "MySql",
+        "ConnectionString": "Data Source=localhost;Database=mesadmin_biz;User ID=root;Password=noke@1234;pooling=true;sslmode=none;CharSet=utf8mb4;",
         "IsAutoCloseConnection": true
       }
     ]

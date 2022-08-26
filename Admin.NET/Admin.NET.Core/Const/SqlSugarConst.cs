@@ -8,7 +8,7 @@ public class SqlSugarConst
     /// <summary>
     /// 默认数据库标识
     /// </summary>
-    public const string ConfigId = "Dilon";
+    public const string ConfigId = "System";
 
     /// <summary>
     /// 默认表主键

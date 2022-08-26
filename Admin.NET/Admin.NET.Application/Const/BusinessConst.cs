@@ -1,6 +1,9 @@
 ﻿namespace Admin.NET.Application.Const;
 
-public class TestConst
+/// <summary>
+/// 业务数据常量
+/// </summary>
+public sealed class BusinessConst
 {
     /// <summary>
     /// API分组名称
@@ -10,5 +13,5 @@ public class TestConst
     /// <summary>
     /// 数据库标识
     /// </summary>
-    public const string ConfigId = "Test";
+    public const string ConfigId = "Business";
 }

@@ -20,5 +20,6 @@ public static class LogoExtension
         Console.WriteLine(@"源码地址: https://gitee.com/zuohuaijun/Admin.NET");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.WriteLine(@"让.NET更简单、更通用、更流行！");
+        Console.WriteLine();
     }
 }

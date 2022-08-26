@@ -1,3 +1,4 @@
+using System.Reflection;
 using DbType = SqlSugar.DbType;
 
 namespace Admin.NET.Core;
@@ -168,7 +169,7 @@ public static class SqlSugarSetup
         foreach (var entityType in entityTypes)
         {
             var tAtt = entityType.GetCustomAttribute<TenantAttribute>();
-            var provider = db.GetConnectionScope(tAtt == null ? SqlSugarConst.ConfigId : tAtt.configId);
+            var provider = db.GetConnectionScope(tAtt == null ? SqlSugarConst.ConfigId : tAtt.configId); // 没有设置会使用默认数据库标识
             provider.CodeFirst.InitTables(entityType);
         }
 
@@ -216,14 +217,13 @@ public static class SqlSugarSetup
     public static void SetDeletedEntityFilter(SqlSugarScopeProvider db)
     {
         // 获取所有继承基类数据表集合
-        var entityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass
-            && (u.BaseType == typeof(EntityBase) || u.BaseType == typeof(EntityTenant) || u.BaseType == typeof(DataEntityBase)));
+        var entityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass && typeof(EntityBase).IsAssignableFrom(u));
         if (!entityTypes.Any()) 
             return;
 
         foreach (var entityType in entityTypes)
         {
-            Expression<Func<DataEntityBase, bool>> dynamicExpression = u => u.IsDelete == false;
+            Expression<Func<EntityBase, bool>> dynamicExpression = u => u.IsDelete == false;
             db.QueryFilter.Add(new TableFilterItem<object>(entityType, dynamicExpression));
         }
     }
@@ -234,7 +234,7 @@ public static class SqlSugarSetup
     public static async void SetOrgEntityFilter(SqlSugarScopeProvider db)
     {
         // 获取业务数据表集合
-        var dataEntityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass && u.BaseType == typeof(DataEntityBase));
+        var dataEntityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass && typeof(DataEntityBase).IsAssignableFrom(u));
         if (!dataEntityTypes.Any()) 
             return;
 
@@ -297,8 +297,7 @@ public static class SqlSugarSetup
     public static void SetTenantEntityFilter(SqlSugarScopeProvider db)
     {
         // 获取租户实体数据表集合
-        var dataEntityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass
-            && u.BaseType == typeof(EntityTenant));
+        var dataEntityTypes = App.EffectiveTypes.Where(u => !u.IsInterface && !u.IsAbstract && u.IsClass && typeof(EntityTenant).IsAssignableFrom(u));
         if (!dataEntityTypes.Any()) 
             return;
 

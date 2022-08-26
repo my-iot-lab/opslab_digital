@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Admin.NET.Application.Service;
 
-[ApiDescriptionSettings(TestConst.GroupName, Name = "XXX模块", Order = 200)]
+[ApiDescriptionSettings(BusinessConst.GroupName, Name = "XXX模块", Order = 200)]
 [AllowAnonymous]
 public class TestService2 : IDynamicApiController, ITransient
 {

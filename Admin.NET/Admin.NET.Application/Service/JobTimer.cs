@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 namespace Admin.NET.Application.Service;
 
 /// <summary>
-/// 任务调度测试
+/// 任务调度定时器。
 /// </summary>
 public class JobTimer : ISpareTimeWorker
 {
@@ -30,7 +30,7 @@ public class JobTimer : ISpareTimeWorker
         {
             //var db = scope.ServiceProvider.GetService<ISqlSugarClient>();
 
-            _logger.LogInformation($"【定时器】{DateTime.Now} 执行次数：{count}");
+            //_logger.LogInformation($"【定时器】{DateTime.Now} 执行次数：{count}");
         });
     }
 }
