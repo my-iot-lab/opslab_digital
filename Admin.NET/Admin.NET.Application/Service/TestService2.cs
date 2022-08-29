@@ -47,17 +47,17 @@ public class ReportData
     /// <summary>
     /// 姓名
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// 身份证
     /// </summary>
-    public string IdNo { get; set; }
+    public string? IdNo { get; set; }
 
     /// <summary>
     /// 性别
     /// </summary>
-    public string Sex { get; set; }
+    public string? Sex { get; set; }
 
     /// <summary>
     /// 年龄
@@ -67,20 +67,20 @@ public class ReportData
     /// <summary>
     /// 试管编号
     /// </summary>
-    public string TudeNo { get; set; }
+    public string? TudeNo { get; set; }
 
     /// <summary>
     /// 采样时间
     /// </summary>
-    public string CollectTime { get; set; }
+    public string? CollectTime { get; set; }
 
     /// <summary>
     /// 收样时间
     /// </summary>
-    public string ReceiveTime { get; set; }
+    public string? ReceiveTime { get; set; }
 
     /// <summary>
     /// 检测时间
     /// </summary>
-    public string CheckTime { get; set; }
+    public string? CheckTime { get; set; }
 }

@@ -50,7 +50,7 @@ public static class ObjectExtension
     /// <returns></returns>
     public static string UrlEncode(this string str)
     {
-        return string.IsNullOrEmpty(str) ? "" : System.Web.HttpUtility.UrlEncode(str, Encoding.UTF8);
+        return string.IsNullOrEmpty(str) ? "" : HttpUtility.UrlEncode(str, Encoding.UTF8);
     }
 
     /// <summary>
@@ -73,8 +73,10 @@ public static class ObjectExtension
                 {
                     colType = colType.GetGenericArguments()[0];
                 }
+
                 if (IsIgnoreColumn(pi))
                     continue;
+
                 result.Columns.Add(pi.Name, colType);
             }
             for (int i = 0; i < list.Count; i++)

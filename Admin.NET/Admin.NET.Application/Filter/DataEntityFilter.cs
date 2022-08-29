@@ -10,15 +10,17 @@ public class DataEntityFilter : IEntityFilter
         // 当前用户所属机构
         var orgName = App.User?.FindFirst(ClaimConst.OrgName)?.Value;
         if (string.IsNullOrWhiteSpace(orgName))
-            return null;
+            return Array.Empty<TableFilterItem<object>>();
 
         // 构造自定义条件的过滤器
-        Expression<Func<Test, bool>> dynamicExpression = u => u.Name.Contains(orgName);
-        var tableFilterItem = new TableFilterItem<object>(typeof(Test), dynamicExpression);
+        //Expression<Func<Test, bool>> dynamicExpression = u => u.Name.Contains(orgName);
+        //var tableFilterItem = new TableFilterItem<object>(typeof(Test), dynamicExpression);
 
-        return new[]
-        {
-            tableFilterItem
-        };
+        //return new[]
+        //{
+        //    tableFilterItem
+        //};
+
+        return Array.Empty<TableFilterItem<object>>();
     }
 }

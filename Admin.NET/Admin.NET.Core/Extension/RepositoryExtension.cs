@@ -229,7 +229,7 @@ public static class RepositoryExtension
         var configId = attr == null ? SqlSugarConst.ConfigId : attr.configId.ToString();
         var tableName = entityType.GetCustomAttribute<SugarTable>().TableName;
 
-        //根据实际的数据库类型 修改此处  如果固定使用一个数据库，可用直接写死
+        // 根据实际的数据库类型 修改此处  如果固定使用一个数据库，可用直接写死
         var wholeTableName = $"{configId}.dbo.{tableName}";
         if (ado is MySqlProvider)
         {

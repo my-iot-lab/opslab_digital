@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	<Nullable>enable</Nullable>
     <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
@@ -13,6 +14,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Admin.NET.Core\Admin.NET.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SeedData\" />
   </ItemGroup>
 
 </Project>
