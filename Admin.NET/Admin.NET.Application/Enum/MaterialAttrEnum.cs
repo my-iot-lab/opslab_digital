@@ -6,20 +6,14 @@
 public enum MaterialAttrEnum
 {
     /// <summary>
-    /// 成品
+    /// 产品
     /// </summary>
-    [Description("成品")]
-    FinishedProduct = 1,
+    [Description("产品")]
+    Product = 1,
 
     /// <summary>
-    /// 半成品
+    /// 物料
     /// </summary>
-    [Description("半成品")]
-    SemifinishedProduct = 2,
-
-    /// <summary>
-    /// 原材料
-    /// </summary>
-    [Description("原材料")]
-    RawMaterial = 3,
+    [Description("物料")]
+    Material = 2,
 }

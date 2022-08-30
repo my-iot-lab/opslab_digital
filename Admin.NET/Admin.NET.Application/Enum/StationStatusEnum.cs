@@ -6,8 +6,8 @@
 public enum RunningStatusEnum
 {
     [Description("运行中")]
-    Running,
+    Running = 1,
 
     [Description("已离线")]
-    Offline,
+    Offline = 2,
 }

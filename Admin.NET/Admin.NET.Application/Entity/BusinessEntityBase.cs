@@ -1,6 +1,4 @@
-﻿using Admin.NET.Application.Const;
-
-namespace Admin.NET.Application.Entity;
+﻿namespace Admin.NET.Application.Entity;
 
 /// <summary>
 /// 业务实体基类 Id，采用 Business 数据库。
