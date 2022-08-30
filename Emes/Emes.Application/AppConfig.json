@@ -1,0 +1,51 @@
+﻿{
+  "$schema": "https://gitee.com/dotnetchina/Furion/raw/net6/schemas/v3/furion-schema.json",
+
+  "DbConnection": {
+    "EnableInitTable": false, // 启用初始化库表
+    "EnableDiffLog": false, // 启用库表差异日志
+    "ConnectionConfigs": [ // 默认第一个为主库
+      {
+        "ConfigId": "System",
+        "DbType": "MySql", // MySql、SqlServer、Sqlite、Oracle、PostgreSQL、Dm、Kdbndp、Oscar、MySqlConnector、Access
+        "ConnectionString": "Data Source=localhost;Database=mesadmin_sys;User ID=root;Password=noke@1234;pooling=true;sslmode=none;CharSet=utf8mb4;",
+        "IsAutoCloseConnection": true
+      },
+      {
+        "ConfigId": "Business",
+        "DbType": "MySql",
+        "ConnectionString": "Data Source=localhost;Database=mesadmin_biz;User ID=root;Password=noke@1234;pooling=true;sslmode=none;CharSet=utf8mb4;",
+        "IsAutoCloseConnection": true
+      }
+    ]
+  },
+  // 代码生成配置项-程序集名称集合
+  "CodeGen": {
+    "EntityAssemblyNames": [ "Emes.Core", "Emes.Application" ]
+  },
+  "Wechat": {
+    // 公众号
+    "WechatAppId": "",
+    "WechatAppSecret": "",
+    "EncodingAESKey": "",
+    "Token": "",
+    // 小程序
+    "WxOpenAppId": "",
+    "WxOpenAppSecret": "",
+    "WxOpenToken": "",
+    "WxOpenEncodingAESKey": ""
+  },
+  "WechatPay": {
+    "AppId": "", // 微信公众平台AppId、开放平台AppId、小程序AppId、企业微信CorpId
+    "MerchantId": "", // 商户平台的商户号
+    "MerchantV3Secret": "", // 商户平台的APIv3密钥
+    "MerchantCertificateSerialNumber": "", // 商户平台的证书序列号
+    "MerchantCertificatePrivateKey": "\\WxPayCert\\apiclient_key.pem" // 商户平台的API证书私钥(apiclient_key.pem文件内容)
+  },
+  "PayCallBack": {
+    "WechatPayUrl": "/notify/weChatPay/unifiedorder", // 微信支付回调
+    "WechatRefundUrl": "/notify/weChatPay/refund", // 微信退款回调
+    "AlipayUrl": "", // 支付宝支付回调
+    "AlipayRefundUrl": "" // 支付宝退款回调
+  }
+}
