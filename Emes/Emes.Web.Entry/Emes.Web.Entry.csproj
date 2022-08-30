@@ -11,11 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="Admin.NET.db" />
-		<None Remove="Test.db" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <EmbeddedResource Include="sensitive-words.txt" />
 	</ItemGroup>
 

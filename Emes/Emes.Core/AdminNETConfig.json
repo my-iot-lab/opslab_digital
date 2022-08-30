@@ -75,7 +75,7 @@
   "Cache": {
     "CacheType": "MemoryCache", // RedisCache
     "RedisConnectionString": "127.0.0.1:6379,password=,defaultDatabase=2",
-    "InstanceName": "zuo_"
+    "InstanceName": "opslab_"
   },
   "SnowId": {
     "WorkerId": 5 // 取值范围0~63,默认1

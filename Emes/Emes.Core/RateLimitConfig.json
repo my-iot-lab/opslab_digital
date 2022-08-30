@@ -13,7 +13,7 @@
     // 将ClientIdHeader被用于提取白名单的客户端ID。如果此标头中存在客户端ID并且与ClientWhitelist中指定的值匹配，则不应用速率限制。
     "ClientIdHeader": "X-ClientId",
     // IP白名单:支持Ipv4和Ipv6
-    "IpWhitelist": [],
+    "IpWhitelist": [ "127.0.0.1", "192.168.0.0/24" ],
     // 端点白名单
     "EndpointWhitelist": [],
     // 客户端白名单
