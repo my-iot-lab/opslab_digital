@@ -15,7 +15,7 @@ public class ProProcessParameter : BizEntityBase
     /// <summary>
     /// 工序
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(ProcessId))]
     public ProProcess? Process { get; set; }
 
     /// <summary>

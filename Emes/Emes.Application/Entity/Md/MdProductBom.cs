@@ -4,7 +4,7 @@
 /// 产品BOM关系
 /// </summary>
 [SugarTable("md_product_bom", "产品BOM关系表")]
-public class MdProductBom : BizEntityBase
+public sealed class MdProductBom : BizEntityBase
 {
     /// <summary>
     /// 产品信息 Id
@@ -15,22 +15,22 @@ public class MdProductBom : BizEntityBase
     /// <summary>
     /// 产品信息
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(ProductId))]
     public MdItem? Product { get; set; }
 
     /// <summary>
     /// 产线
     /// </summary>
-    [SugarColumn(ColumnDescription = "产线", Length = 32)]
-    [Required, MaxLength(32)]
+    [SugarColumn(ColumnDescription = "产线", Length = 64)]
+    [Required, MaxLength(64)]
     [NotNull]
     public string? Line { get; set; }
 
     /// <summary>
     /// 工站
     /// </summary>
-    [SugarColumn(ColumnDescription = "工站", Length = 32)]
-    [Required, MaxLength(32)]
+    [SugarColumn(ColumnDescription = "工站", Length = 64)]
+    [Required, MaxLength(64)]
     [NotNull]
     public string? Station { get; set; }
 
@@ -43,7 +43,7 @@ public class MdProductBom : BizEntityBase
     /// <summary>
     /// 物料信息
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(MaterialId))]
     public MdItem? Material { get; set; }
 
     /// <summary>

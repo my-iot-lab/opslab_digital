@@ -15,7 +15,7 @@ public sealed class SysCodeRecord : BizEntityBase
     /// <summary>
     /// 代码生成规则
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(RuleId))]
     public SysCodeRule? CodeRule { get; set; }
 
     /// <summary>

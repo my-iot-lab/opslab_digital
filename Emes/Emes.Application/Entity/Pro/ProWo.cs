@@ -5,6 +5,7 @@
 /// <para></para>
 /// </summary>
 [SugarTable("pro_wo", "生产工单表")]
+[SugarIndex("index_pro_wo_code", nameof(Code), OrderByType.Asc)]
 public class ProWo : BizEntityBase
 {
     /// <summary>
@@ -24,7 +25,7 @@ public class ProWo : BizEntityBase
     public string? Name { get; set; }
 
     /// <summary>
-    /// 工单来源
+    /// 工单来源，如 ERP、LOCAL
     /// </summary>
     [SugarColumn(ColumnDescription = "工单来源", Length = 16)]
     [Required, MaxLength(16)]

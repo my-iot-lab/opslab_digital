@@ -1,15 +1,16 @@
 ﻿namespace Emes.Application.Entity;
 
 /// <summary>
-/// 出站存档明细项数组值明细信息
+/// 产品出站存档明细项数组值明细信息
 /// </summary>
-[SugarTable("pt_archive_item_line", "出站存档明细项数组值明细信息表")]
+[SugarTable("pt_archive_item_line", "产品出站存档明细项数组值明细信息表")]
+[SugarIndex("index_pt_archive_item_line_archiveitemid", nameof(ArchiveItemId), OrderByType.Asc)]
 public class PtArchiveItemLine : BizEntityBaseId
 {
     /// <summary>
     /// 产品数据存档明细明细信息 Id。
     /// </summary>
-    [SugarColumn(ColumnDescription = "产品数据存档明细信息Id")]
+    [SugarColumn(ColumnDescription = "产品存档明细信息Id")]
     public long ArchiveItemId { get; set; }
 
     /// <summary>

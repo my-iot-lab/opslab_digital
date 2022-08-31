@@ -1,6 +1,9 @@
 ﻿namespace Emes.Application.Entity;
 
-[SugarTable("dv_machinery", "设备表")]
+/// <summary>
+/// 设备信息
+/// </summary>
+[SugarTable("dv_machinery", "设备信息表")]
 public class DvMachinery : BizEntityBase
 {
     /// <summary>

@@ -1,21 +1,22 @@
 ﻿namespace Emes.Application.Entity;
 
 /// <summary>
-/// 产品数据出站/存档明细信息
+/// 产品出站/存档明细信息
 /// </summary>
-[SugarTable("pt_archive_item", "产品数据出站存档明细信息表")]
+[SugarTable("pt_archive_item", "产品出站存档明细信息表")]
+[SugarIndex("index_pt_archive_item_archiveid", nameof(ArchiveId), OrderByType.Asc)]
 public class PtArchiveItem : BizEntityBaseId
 {
     /// <summary>
     /// 产品数据存档信息 Id。
     /// </summary>
-    [SugarColumn(ColumnDescription = "产品数据存档信息Id")]
+    [SugarColumn(ColumnDescription = "产品存档信息Id")]
     public long ArchiveId { get; set; }
 
     /// <summary>
     /// 产品数据存档信息
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(ArchiveId))]
     public PtArchive? Archive { get; set; }
 
     /// <summary>
@@ -59,4 +60,10 @@ public class PtArchiveItem : BizEntityBaseId
     /// </summary>
     [SugarColumn(ColumnDescription = "下限值", Length = 12, DecimalDigits = 2)]
     public decimal? Lower { get; set; }
+
+    /// <summary>
+    /// 产品出站存档明细项数组值明细信息集合
+    /// </summary>
+    [Navigate(NavigateType.OneToMany, nameof(PtArchiveItemLine.ArchiveItemId))]
+    public List<PtArchiveItemLine>? ArchiveItemLines { get; set; }
 }

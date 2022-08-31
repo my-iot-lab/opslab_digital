@@ -1,26 +1,39 @@
 ﻿namespace Emes.Application.Entity;
 
 /// <summary>
-/// 产品数据出站/存档信息
+/// 产品出站/存档信息
 /// </summary>
-[SugarTable("pt_archive", "产品数据出站存档信息表")]
+[SugarTable("pt_archive", "产品出站存档信息表")]
+[SugarIndex("index_pt_archive_sn", nameof(SN), OrderByType.Asc)]
 public class PtArchive : BizEntityBaseId
 {
     /// <summary>
-    /// 产线
+    /// 工站 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "产线", Length = 32)]
-    [Required, MaxLength(32)]
-    [NotNull]
-    public string? Line { get; set; }
+    [SugarColumn(ColumnDescription = "工站 Id")]
+    public long StationId { get; set; }
 
     /// <summary>
     /// 工站
     /// </summary>
-    [SugarColumn(ColumnDescription = "工站", Length = 32)]
-    [Required, MaxLength(32)]
+    [Navigate(NavigateType.OneToOne, nameof(StationId))]
+    public MdStation? Station { get; set; }
+
+    /// <summary>
+    /// 产线代码
+    /// </summary>
+    [SugarColumn(ColumnDescription = "产线代码", Length = 64)]
+    [Required, MaxLength(64)]
     [NotNull]
-    public string? Station { get; set; }
+    public string? LineCode { get; set; }
+
+    /// <summary>
+    /// 工站代码
+    /// </summary>
+    [SugarColumn(ColumnDescription = "工站代码", Length = 64)]
+    [Required, MaxLength(64)]
+    [NotNull]
+    public string? StationCode { get; set; }
 
     /// <summary>
     /// 物料号
@@ -31,9 +44,10 @@ public class PtArchive : BizEntityBaseId
     public string? ProductCode { get; set; }
 
     /// <summary>
-    /// 工单
+    /// 工单号
+    /// <para>工单可以不存在。</para>
     /// </summary>
-    [SugarColumn(ColumnDescription = "工单", Length = 64)]
+    [SugarColumn(ColumnDescription = "工单号", Length = 64)]
     [MaxLength(64)]
     public string? WO { get; set; }
 
@@ -49,7 +63,7 @@ public class PtArchive : BizEntityBaseId
     /// 程序配方号
     /// </summary>
     [SugarColumn(ColumnDescription = "程序配方号")]
-    public int Formual { get; set; }
+    public int FormualNo { get; set; }
 
     /// <summary>
     /// 过站状态
@@ -66,8 +80,8 @@ public class PtArchive : BizEntityBaseId
     /// <summary>
     /// 操作人
     /// </summary>
-    [SugarColumn(ColumnDescription = "操作人", Length = 32)]
-    [MaxLength(32)]
+    [SugarColumn(ColumnDescription = "操作人", Length = 64)]
+    [MaxLength(64)]
     public string? Operator { get; set; }
 
     /// <summary>
@@ -80,13 +94,19 @@ public class PtArchive : BizEntityBaseId
     /// <summary>
     /// 托盘号
     /// </summary>
-    [SugarColumn(ColumnDescription = "托盘号", Length = 32)]
-    [MaxLength(32)]
+    [SugarColumn(ColumnDescription = "托盘号", Length = 64)]
+    [MaxLength(64)]
     public string? Pallet { get; set; }
 
     /// <summary>
     /// 存档时间
     /// </summary>
     [SugarColumn(ColumnDescription = "存档时间")]
-    public DateTime CreatedAt { get; set; }
+    public DateTime CreateTime { get; set; }
+
+    /// <summary>
+    /// 产品出站/存档明细信息集合
+    /// </summary>
+    [Navigate(NavigateType.OneToMany, nameof(PtArchiveItem.ArchiveId))]
+    public List<PtArchiveItem>? ArchiveItems { get; set; }
 }

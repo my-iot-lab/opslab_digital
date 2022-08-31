@@ -4,7 +4,7 @@
 /// 工艺路线信息。
 /// </summary>
 [SugarTable("pro_process_route", "工艺路线表")]
-public class ProProcessRouting : BizEntityBase
+public class ProProcessRoute : BizEntityBase
 {
     /// <summary>
     /// 产品信息Id
@@ -35,14 +35,6 @@ public class ProProcessRouting : BizEntityBase
     public string? Name { get; set; }
 
     /// <summary>
-    /// 产线
-    /// </summary>
-    [SugarColumn(ColumnDescription = "产线", Length = 32)]
-    [Required, MaxLength(32)]
-    [NotNull]
-    public string? Line { get; set; }
-
-    /// <summary>
     /// 当前工序 Id
     /// </summary>
     [SugarColumn(ColumnDescription = "当前工序 Id")]
@@ -51,7 +43,7 @@ public class ProProcessRouting : BizEntityBase
     /// <summary>
     /// 当前工序
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(CurrentId))]
     public ProProcess? Current { get; set; }
 
     /// <summary>
@@ -63,6 +55,6 @@ public class ProProcessRouting : BizEntityBase
     /// <summary>
     /// 下一工序
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(NextId))]
     public ProProcess? Next { get; set; }
 }

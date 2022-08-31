@@ -1,11 +1,11 @@
 ﻿namespace Emes.Application.Entity;
 
 /// <summary>
-/// 产品进站信息
+/// 警报记录
 /// </summary>
-[SugarTable("pt_inbound", "产品进站信息表")]
-[SugarIndex("index_pt_inbound_sn", nameof(SN), OrderByType.Asc)]
-public sealed class PtInbound : BizEntityBaseId
+[SugarTable("pt_alarm_record", "警报记录表")]
+[SugarIndex("index_pt_alarm_record_createtime", nameof(CreateTime), OrderByType.Desc)]
+public class PtAlarmRecord : BizEntityBaseId
 {
     /// <summary>
     /// 工站 Id
@@ -36,36 +36,23 @@ public sealed class PtInbound : BizEntityBaseId
     public string? StationCode { get; set; }
 
     /// <summary>
-    /// 工单号
-    /// <para>工单可以不存在。</para>
+    /// 分类
     /// </summary>
-    [SugarColumn(ColumnDescription = "工单号", Length = 64)]
-    [MaxLength(64)]
-    public string? WO { get; set; }
-
-    /// <summary>
-    /// SN
-    /// </summary>
-    [SugarColumn(ColumnDescription = "SN", Length = 64)]
-    [Required, MaxLength(64)]
+    [SugarColumn(ColumnDescription = "分类", Length = 32)]
+    [Required, MaxLength(32)]
     [NotNull]
-    public string? SN { get; set; }
+    public string? Category { get; set; }
 
     /// <summary>
-    /// 程序配方号
+    /// 描述
     /// </summary>
-    [SugarColumn(ColumnDescription = "程序配方号")]
-    public int FormualNo { get; set; }
+    [SugarColumn(ColumnDescription = "描述", Length = 64)]
+    [MaxLength(64)]
+    public string? Descirption { get; set; }
 
     /// <summary>
-    /// 进站时间
+    /// 警报时间
     /// </summary>
-    [SugarColumn(ColumnDescription = "进站时间")]
+    [SugarColumn(ColumnDescription = "警报时间")]
     public DateTime CreateTime { get; set; }
-
-    /// <summary>
-    /// 产品进站明细信息集合
-    /// </summary>
-    [Navigate(NavigateType.OneToMany, nameof(PtInboundItem.InboundId))]
-    public List<PtInboundItem>? InboundItems { get; set; }
 }

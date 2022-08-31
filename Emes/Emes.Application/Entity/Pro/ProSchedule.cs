@@ -15,7 +15,7 @@ public sealed class ProSchedule : BizEntityBase
     /// <summary>
     /// 工单信息
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(WoId))]
     public ProWo? Wo { get; set; }
 
     /// <summary>

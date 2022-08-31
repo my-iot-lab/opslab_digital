@@ -4,7 +4,8 @@
 /// 产品进站明细信息
 /// </summary>
 [SugarTable("pt_inbound_item", "产品进站信息表")]
-public class PtInboundItem : BizEntityBaseId
+[SugarIndex("index_pt_inbound_item_inboundid", nameof(InboundId), OrderByType.Asc)]
+public sealed class PtInboundItem : BizEntityBaseId
 {
     /// <summary>
     /// 产品进站信息 Id。
@@ -15,7 +16,7 @@ public class PtInboundItem : BizEntityBaseId
     /// <summary>
     /// 产品进站信息
     /// </summary>
-    [SugarColumn(IsIgnore = true)]
+    [Navigate(NavigateType.OneToOne, nameof(InboundId))]
     public PtInbound? Inbound { get; set; }
 
     /// <summary>

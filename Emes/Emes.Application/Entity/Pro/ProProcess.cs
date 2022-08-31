@@ -34,4 +34,10 @@ public sealed class ProProcess : BizEntityBase
     /// </summary>
     [SugarColumn(ColumnDescription = "工序名称")]
     public StatusEnum Status { get; set; } = StatusEnum.Enable;
+
+    /// <summary>
+    /// 工序参数集合
+    /// </summary>
+    [Navigate(NavigateType.OneToMany, nameof(ProProcessParameter.ProcessId))]
+    public List<ProProcessParameter>? ProcessParameters { get; set; }
 }
