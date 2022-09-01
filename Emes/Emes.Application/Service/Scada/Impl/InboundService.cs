@@ -18,9 +18,9 @@ public sealed class InboundService : IInboundService, ITransient
     {
         await Task.Delay(100);
 
-        var sn = data.GetValue<string>(PlcVariableTag.PLC_Inbound_SN);
-        var formula = data.GetValue<int>(PlcVariableTag.PLC_Inbound_Formula);
-        var pallet = data.GetValue<string>(PlcVariableTag.PLC_Inbound_Pallet);
+        var sn = data.GetValue<string>(PlcSymbolTag.PLC_Inbound_SN);
+        var formula = data.GetValue<int>(PlcSymbolTag.PLC_Inbound_Formula);
+        var pallet = data.GetValue<string>(PlcSymbolTag.PLC_Inbound_Pallet);
         if (string.IsNullOrWhiteSpace(sn))
         {
             return ApiResult.Error(ErrorCode.ErrEmptyOfSN);

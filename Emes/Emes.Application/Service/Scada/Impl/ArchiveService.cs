@@ -10,12 +10,12 @@ public sealed class ArchiveService : IArchiveService, ITransient
     {
         await Task.Delay(100); // test
 
-        var sn = data.GetValue<string>(PlcVariableTag.PLC_Archive_SN);
-        var pass = data.GetValue<int>(PlcVariableTag.PLC_Archive_Pass);
-        var ct = data.GetValue<int>(PlcVariableTag.PLC_Archive_Cycletime);
-        var @operator = data.GetValue<string>(PlcVariableTag.PLC_Archive_Operator);
-        var shift = data.GetValue<int>(PlcVariableTag.PLC_Archive_Shift);
-        var pallet = data.GetValue<string>(PlcVariableTag.PLC_Archive_Pallet);
+        var sn = data.GetValue<string>(PlcSymbolTag.PLC_Archive_SN);
+        var pass = data.GetValue<int>(PlcSymbolTag.PLC_Archive_Pass);
+        var ct = data.GetValue<int>(PlcSymbolTag.PLC_Archive_Cycletime);
+        var @operator = data.GetValue<string>(PlcSymbolTag.PLC_Archive_Operator);
+        var shift = data.GetValue<int>(PlcSymbolTag.PLC_Archive_Shift);
+        var pallet = data.GetValue<string>(PlcSymbolTag.PLC_Archive_Pallet);
 
         if (string.IsNullOrWhiteSpace(sn))
         {

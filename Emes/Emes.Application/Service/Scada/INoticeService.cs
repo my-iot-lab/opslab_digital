@@ -10,5 +10,5 @@ public interface INoticeService
     /// </summary>
     /// <param name="data">数据</param>
     /// <returns></returns>
-    Task<ApiResult> HandleAsync(ApiData data);
+    Task HandleAsync(ApiData data);
 }

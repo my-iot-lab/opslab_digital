@@ -6,31 +6,22 @@ public sealed class AlarmService : IAlarmService, ITransient
     {
     }
 
-    public async Task<ApiResult> HandleAsync(ApiData data)
+    public Task HandleAsync(ApiData data)
     {
-        await Task.Delay(100); // test
-
         if (data.Values.Length == 0)
         {
-            return ApiResult.Ok();
+            return Task.CompletedTask;
         }
 
         var alarmValues = data.Values[0].GetValue<bool[]>(); // 警报数据
-        try
+        for (int i = 0; i < alarmValues!.Length; i++)
         {
-            for (int i = 0; i < alarmValues!.Length; i++)
+            if (alarmValues[i])
             {
-                if (alarmValues[i])
-                {
-                    // DoSomething...
-                }
+                // DoSomething...
             }
         }
-        catch (Exception ex)
-        {
-            return ApiResult.Error(ex.Message);
-        }
 
-        return ApiResult.Ok();
+        return Task.CompletedTask;
     }
 }

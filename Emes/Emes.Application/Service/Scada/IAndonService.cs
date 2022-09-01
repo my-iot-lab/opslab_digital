@@ -1,12 +1,12 @@
 ﻿namespace Emes.Application.Service;
 
 /// <summary>
-/// SCADA 警报服务
+/// SCADA 安灯服务。
 /// </summary>
-public interface IAlarmService
+public interface IAndonService
 {
     /// <summary>
-    /// 处理警报数据
+    /// 处理安灯数据
     /// </summary>
     /// <param name="data">数据</param>
     /// <returns></returns>

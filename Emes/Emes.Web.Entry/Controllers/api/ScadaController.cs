@@ -15,6 +15,7 @@ namespace Emes.Web.Entry.Controllers;
 public class ScadaController : ControllerBase
 {
     private readonly IAlarmService _alarmService;
+    private readonly IAndonService _andonService;
     private readonly INoticeService _noticeService;
     private readonly IInboundService _inboundService;
     private readonly IArchiveService _archiveService;
@@ -23,6 +24,7 @@ public class ScadaController : ControllerBase
 
     public ScadaController(
         IAlarmService alarmService,
+        IAndonService andonService,
         INoticeService noticeService,
         IInboundService inboundService,
         IArchiveService archiveService,
@@ -30,6 +32,7 @@ public class ScadaController : ControllerBase
         ICustomService customService)
     {
         _alarmService = alarmService;
+        _andonService = andonService;
         _noticeService = noticeService;
         _inboundService = inboundService;
         _archiveService = archiveService;
@@ -45,8 +48,20 @@ public class ScadaController : ControllerBase
     {
         ReBuild(data);
 
-        var ret = await _alarmService.HandleAsync(data);
-        return Ok(ret);
+        await _alarmService.HandleAsync(data);
+        return Ok();
+    }
+
+    /// <summary>
+    /// 安灯
+    /// </summary>
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Andon([FromBody] ApiData data)
+    {
+        ReBuild(data);
+
+         await _andonService.HandleAsync(data);
+        return Ok();
     }
 
     /// <summary>
@@ -57,8 +72,8 @@ public class ScadaController : ControllerBase
     {
         ReBuild(data);
 
-        var ret = await _noticeService.HandleAsync(data);
-        return Ok(ret);
+        await _noticeService.HandleAsync(data);
+        return Ok();
     }
 
     /// <summary>

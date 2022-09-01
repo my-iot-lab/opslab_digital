@@ -11,8 +11,8 @@ public sealed class MaterialService : IMaterialService, ITransient
     {
         await Task.Delay(100);
 
-        var barcode = data.GetValue<string>(PlcVariableTag.PLC_Critical_Material_Barcode);
-        var index = data.GetValue<int>(PlcVariableTag.PLC_Critical_Material_Index);
+        var barcode = data.GetValue<string>(PlcSymbolTag.PLC_Critical_Material_Barcode);
+        var index = data.GetValue<int>(PlcSymbolTag.PLC_Critical_Material_Index);
         if (string.IsNullOrWhiteSpace(barcode))
         {
             return ApiResult.Error();
