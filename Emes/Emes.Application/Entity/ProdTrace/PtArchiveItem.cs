@@ -22,8 +22,8 @@ public class PtArchiveItem : BizEntityBaseId
     /// <summary>
     /// 标签
     /// </summary>
-    [SugarColumn(ColumnDescription = "标签", Length = 32)]
-    [Required, MaxLength(32)]
+    [SugarColumn(ColumnDescription = "标签", Length = 64)]
+    [Required, MaxLength(64)]
     [NotNull]
     public string? Tag { get; set; }
 

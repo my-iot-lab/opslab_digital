@@ -3,11 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Emes.Web.Entry.Controllers;
 
+/// <summary>
+/// 健康检查
+/// </summary>
+[ApiController]
 [AllowAnonymous]
-public class HomeController : Controller
+[Route("api/[controller]")]
+public class HealthController : Controller
 {
+    [HttpGet("")]
     public IActionResult Index()
     {
-        return View();
+        return Ok();
     }
 }

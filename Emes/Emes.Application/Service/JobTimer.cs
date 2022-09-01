@@ -1,5 +1,5 @@
-﻿using Furion.TaskScheduler;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
+using Furion.TaskScheduler;
 
 namespace Emes.Application.Service;
 
@@ -10,7 +10,7 @@ public class JobTimer : ISpareTimeWorker
 {
     private readonly ILogger _logger;
 
-    // 必须为无参的构造函数
+    // 定时器必须为无参的构造函数
     public JobTimer()
     {
         var loggerFactory = App.GetRequiredService<ILoggerFactory>();

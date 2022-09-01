@@ -3,8 +3,8 @@
 /// <summary>
 /// 产品对应的工艺路线信息
 /// </summary>
-[SugarTable("ops_product_process_route", "产品对应的工艺路线表")]
-public class ProProductProcessRoute : BizEntityBase
+[SugarTable("proc_product_process_route", "产品对应的工艺路线表")]
+public class ProcProductProcessRoute : BizEntityBase
 {
     /// <summary>
     /// 产品 Id
@@ -28,7 +28,7 @@ public class ProProductProcessRoute : BizEntityBase
     /// 工艺路线
     /// </summary>
     [Navigate(NavigateType.OneToOne, nameof(ProcessRouteId))]
-    public ProProcessRoute? ProcessRoute { get; set; }
+    public ProcProcessRoute? ProcessRoute { get; set; }
 
     /// <summary>
     /// 程序配方号（PLC 程序配方）。

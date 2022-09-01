@@ -3,8 +3,8 @@
 /// <summary>
 /// 工艺路线信息。
 /// </summary>
-[SugarTable("pro_process_route", "工艺路线表")]
-public class ProProcessRoute : BizEntityBase
+[SugarTable("proc_process_route", "工艺路线表")]
+public class ProcProcessRoute : BizEntityBase
 {
     /// <summary>
     /// 产品信息Id
@@ -44,7 +44,7 @@ public class ProProcessRoute : BizEntityBase
     /// 当前工序
     /// </summary>
     [Navigate(NavigateType.OneToOne, nameof(CurrentId))]
-    public ProProcess? Current { get; set; }
+    public ProcProcess? Current { get; set; }
 
     /// <summary>
     /// 下一工序 Id，Null 表示当前为最终工序。
@@ -56,5 +56,5 @@ public class ProProcessRoute : BizEntityBase
     /// 下一工序
     /// </summary>
     [Navigate(NavigateType.OneToOne, nameof(NextId))]
-    public ProProcess? Next { get; set; }
+    public ProcProcess? Next { get; set; }
 }

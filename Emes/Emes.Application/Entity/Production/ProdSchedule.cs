@@ -3,8 +3,8 @@
 /// <summary>
 /// 生产排产
 /// </summary>
-[SugarTable("pro_schedule", "生产排产表")]
-public sealed class ProSchedule : BizEntityBase
+[SugarTable("prod_schedule", "生产排产表")]
+public sealed class ProdSchedule : BizEntityBase
 {
     /// <summary>
     /// 工单Id
@@ -16,7 +16,7 @@ public sealed class ProSchedule : BizEntityBase
     /// 工单信息
     /// </summary>
     [Navigate(NavigateType.OneToOne, nameof(WoId))]
-    public ProWo? Wo { get; set; }
+    public ProdWo? Wo { get; set; }
 
     /// <summary>
     /// 顺序号

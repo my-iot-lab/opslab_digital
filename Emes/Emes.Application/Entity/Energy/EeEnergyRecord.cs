@@ -3,9 +3,9 @@
 /// <summary>
 /// 能耗记录
 /// </summary>
-[SugarTable("pt_energy_record", "能耗记录表")]
-[SugarIndex("index_pt_energy_record_createtime", nameof(CreateTime), OrderByType.Desc)]
-public class PtEnergyRecord : BizEntityBaseId
+[SugarTable("ee_energy_record", "能耗记录表")]
+[SugarIndex("index_ee_energy_record_createtime", nameof(CreateTime), OrderByType.Desc)]
+public class EeEnergyRecord : BizEntityBaseId
 {
     /// <summary>
     /// 工站 Id

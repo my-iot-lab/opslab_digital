@@ -3,20 +3,32 @@
 /// <summary>
 /// 产品SOP
 /// </summary>
-[SugarTable("pro_process_sop", "产品SOP表")]
-public class ProProcessSop : BizEntityBase
+[SugarTable("proc_process_sop", "产品SOP表")]
+public class ProcProcessSop : BizEntityBase
 {
     /// <summary>
     /// 产品 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "产品 Id")]
+    [SugarColumn(ColumnDescription = "产品Id")]
     public long ProductId { get; set; }
+
+    /// <summary>
+    /// 产品信息
+    /// </summary>
+    [Navigate(NavigateType.OneToOne, nameof(ProductId))]
+    public MdItem? Product { get; set; }
 
     /// <summary>
     /// 工序 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "工序 Id")]
+    [SugarColumn(ColumnDescription = "工序Id")]
     public long ProcessId { get; set; }
+
+    /// <summary>
+    /// 工序
+    /// </summary>
+    [Navigate(NavigateType.OneToOne, nameof(ProcessId))]
+    public ProcProcess? Process { get; set; }
 
     /// <summary>
     /// SOP 标题

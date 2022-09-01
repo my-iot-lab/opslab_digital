@@ -4,9 +4,9 @@
 /// 生产工单。
 /// <para></para>
 /// </summary>
-[SugarTable("pro_wo", "生产工单表")]
-[SugarIndex("index_pro_wo_code", nameof(Code), OrderByType.Asc)]
-public class ProWo : BizEntityBase
+[SugarTable("prod_wo", "生产工单表")]
+[SugarIndex("index_prod_wo_code", nameof(Code), OrderByType.Asc)]
+public class ProdWo : BizEntityBase
 {
     /// <summary>
     /// 工单编码

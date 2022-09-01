@@ -31,6 +31,7 @@ public class JwtHandler : AppAuthorizeHandler
             DefaultHttpContext currentHttpContext = context.GetCurrentHttpContext();
             if (currentHttpContext == null)
                 return;
+
             currentHttpContext.SignoutToSwagger();
         }
     }
@@ -64,11 +65,12 @@ public class JwtHandler : AppAuthorizeHandler
         // 默认路由
         var defalutRoute = new List<string>()
         {
-            "getLoginUser",     // 系统登录接口
-            "sysMenu:change"    // 菜单切换接口
+            "getLoginUser", // 系统登录接口
+            "sysMenu:change", // 菜单切换接口
         };
 
-        if (defalutRoute.Contains(routeName)) return true;
+        if (defalutRoute.Contains(routeName)) 
+            return true;
 
         // 获取用户权限集合（按钮或API接口）
         var permissionList = await App.GetService<SysMenuService>().GetPermCodeList();

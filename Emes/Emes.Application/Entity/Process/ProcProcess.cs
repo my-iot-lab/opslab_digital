@@ -3,8 +3,8 @@
 /// <summary>
 /// 生产工序
 /// </summary>
-[SugarTable("pro_process", "生产工序表")]
-public sealed class ProProcess : BizEntityBase
+[SugarTable("proc_process", "生产工序表")]
+public sealed class ProcProcess : BizEntityBase
 {
     /// <summary>
     /// 工序编码
@@ -38,6 +38,6 @@ public sealed class ProProcess : BizEntityBase
     /// <summary>
     /// 工序参数集合
     /// </summary>
-    [Navigate(NavigateType.OneToMany, nameof(ProProcessParameter.ProcessId))]
-    public List<ProProcessParameter>? ProcessParameters { get; set; }
+    [Navigate(NavigateType.OneToMany, nameof(ProcProcessParameter.ProcessId))]
+    public List<ProcProcessParameter>? ProcessParameters { get; set; }
 }

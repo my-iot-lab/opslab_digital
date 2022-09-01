@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Emes.Core\Emes.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Entity\Andon\" />
+    <Folder Include="Entity\Reporting\" />
+    <Folder Include="Entity\Quality\" />
+  </ItemGroup>
+
 </Project>

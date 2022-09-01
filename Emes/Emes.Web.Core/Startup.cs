@@ -100,7 +100,11 @@ public class Startup : AppStartup
         services.AddViewEngine();
 
         // 即时通讯
-        services.AddSignalR();
+        services.AddSignalR(options =>
+        {
+            options.MaximumParallelInvocationsPerClient = 10;
+            options.EnableDetailedErrors = true;
+        });
 
         // logo显示
         services.AddLogoDisplay();
@@ -151,6 +155,7 @@ public class Startup : AppStartup
 
         // 启用HTTPS
         app.UseHttpsRedirection();
+
         app.UseStaticFiles();
 
         app.UseRouting();

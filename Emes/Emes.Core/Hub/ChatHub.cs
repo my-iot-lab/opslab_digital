@@ -66,11 +66,6 @@ public class ChatHub : Hub<IChatClient>
             Offline = false,
             List = list
         });
-
-        //onlineUsers.Add();
-        //await _cache.SetAsync($"{CacheConst.KeyOnlineUser}{ Context.ConnectionId}", user);
-
-        //await _sendMessageService.SendMessageToUserByConnectionId("asdasd但凡生得分", "下线吧", MessageTypeEnum.Offline, Context.ConnectionId);
     }
 
     /// <summary>
@@ -94,12 +89,6 @@ public class ChatHub : Hub<IChatClient>
                 Offline = true,
                 List = list
             });
-
-            //var onlineUsers = await _cache.GetAsync<List<SysOnlineUser>>(CacheConst.KeyOnlineUser);
-            //if (onlineUsers == null) return;
-
-            //onlineUsers.RemoveAll(u => u.ConnectionId == Context.ConnectionId);
-            //await _cache.RemoveAsync($"{CacheConst.KeyOnlineUser}{ Context.ConnectionId}");
         }
     }
 

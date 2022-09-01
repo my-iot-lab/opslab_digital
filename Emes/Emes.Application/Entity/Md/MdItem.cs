@@ -30,7 +30,7 @@ public sealed class MdItem : BizEntityBase
     public string? Spec { get; set; }
 
     /// <summary>
-    /// 物料属性，如 产品、物料。
+    /// 物料属性。
     /// </summary>
     [SugarColumn(ColumnDescription = "产品物料属性")]
     public MaterialAttrEnum Attr { get; set; }
