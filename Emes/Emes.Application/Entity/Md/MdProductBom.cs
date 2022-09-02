@@ -9,7 +9,7 @@ public sealed class MdProductBom : BizEntityBase
     /// <summary>
     /// 产品信息 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "产品 Id")]
+    [SugarColumn(ColumnDescription = "产品Id")]
     public long ProductId { get; set; }
 
     /// <summary>
@@ -37,7 +37,7 @@ public sealed class MdProductBom : BizEntityBase
     /// <summary>
     /// 物料信息 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "物料信息 Id")]
+    [SugarColumn(ColumnDescription = "物料信息Id")]
     public long MaterialId { get; set; }
 
     /// <summary>
@@ -53,9 +53,10 @@ public sealed class MdProductBom : BizEntityBase
     public int Qty { get; set; }
 
     /// <summary>
-    /// 顺序号
+    /// 上料顺序号。
     /// </summary>
-    [SugarColumn(ColumnDescription = "顺序号")]
+    /// <remarks>用在有顺序的扫码上料流程中校验，当数值大于 0 时有效。</remarks>
+    [SugarColumn(ColumnDescription = "上料顺序号")]
     public int Seq { get; set; }
 
     /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Emes.Application.Enum;
+﻿namespace Emes.Application;
 
 /// <summary>
 /// 运行状态枚举

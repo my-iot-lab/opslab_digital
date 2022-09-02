@@ -1,4 +1,4 @@
-﻿namespace Emes.Application.Enum;
+﻿namespace Emes.Application;
 
 /// <summary>
 /// 工站类型枚举

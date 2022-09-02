@@ -10,7 +10,7 @@ public sealed class PtInbound : BizEntityBaseId
     /// <summary>
     /// 工站 Id
     /// </summary>
-    [SugarColumn(ColumnDescription = "工站 Id")]
+    [SugarColumn(ColumnDescription = "工站Id")]
     public long StationId { get; set; }
 
     /// <summary>

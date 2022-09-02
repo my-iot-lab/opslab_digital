@@ -3,14 +3,20 @@
 /// <summary>
 /// 字典数据
 /// </summary>
-[SugarTable("sys_dict_data", "字典数据表")]
-public class DictData : BizEntityBase
+[SugarTable("app_dict_data", "业务字典数据表")]
+public class AppDictData : BizEntityBase
 {
     /// <summary>
     /// 字典类型Id
     /// </summary>
     [SugarColumn(ColumnDescription = "字典类型Id")]
     public long DictTypeId { get; set; }
+
+    /// <summary>
+    /// 字典类型
+    /// </summary>
+    [Navigate(NavigateType.OneToOne, nameof(DictTypeId))]
+    public AppDictType? DictType { get; set; }
 
     /// <summary>
     /// 值

@@ -4,7 +4,6 @@
 /// 系统字典值服务
 /// </summary>
 [ApiDescriptionSettings(Order = 191)]
-[AllowAnonymous]
 public class SysDictDataService : IDynamicApiController, ITransient
 {
     private readonly SqlSugarRepository<SysDictData> _sysDictDataRep;

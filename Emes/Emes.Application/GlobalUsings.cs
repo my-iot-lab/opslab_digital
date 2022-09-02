@@ -14,11 +14,12 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.Extensions.DependencyInjection;
 
 global using Furion;
+global using Furion.DataValidation;
 global using Furion.DependencyInjection;
 global using Furion.DynamicApiController;
+global using Furion.FriendlyException;
 global using Mapster;
 global using SqlSugar;
 
 global using Emes.Application.Entity;
-global using Emes.Application.Enum;
 global using Emes.Core;

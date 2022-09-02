@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Emes.Application.Enum;
 using Emes.Application.Service;
+using Emes.Application;
 using Emes.Application.Utils;
 
 namespace Emes.Web.Entry.Controllers;

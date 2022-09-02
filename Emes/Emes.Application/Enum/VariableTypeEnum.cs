@@ -1,4 +1,4 @@
-﻿namespace Emes.Application.Enum;
+﻿namespace Emes.Application;
 
 /// <summary>
 /// 设备地址变量类型枚举

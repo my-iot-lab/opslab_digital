@@ -3,8 +3,8 @@
 /// <summary>
 /// 字典类型
 /// </summary>
-[SugarTable("sys_dict_type", "字典类型表")]
-public sealed class DictType : BizEntityBase
+[SugarTable("app_dict_type", "业务字典类型表")]
+public sealed class AppDictType : BizEntityBase
 {
     /// <summary>
     /// 名称
@@ -26,7 +26,7 @@ public sealed class DictType : BizEntityBase
     /// 排序
     /// </summary>
     [SugarColumn(ColumnDescription = "排序")]
-    public int Sort { get; set; }
+    public int Order { get; set; }
 
     /// <summary>
     /// 备注

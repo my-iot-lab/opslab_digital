@@ -3,8 +3,8 @@
 /// <summary>
 /// 编码生成记录表
 /// </summary>
-[SugarTable("sys_code_record", "编码生成记录表")]
-public sealed class SysCodeRecord : BizEntityBase
+[SugarTable("app_code_record", "编码生成记录表")]
+public sealed class AppCodeRecord : BizEntityBase
 {
     /// <summary>
     /// 规则ID
@@ -16,7 +16,7 @@ public sealed class SysCodeRecord : BizEntityBase
     /// 代码生成规则
     /// </summary>
     [Navigate(NavigateType.OneToOne, nameof(RuleId))]
-    public SysCodeRule? CodeRule { get; set; }
+    public AppCodeRule? CodeRule { get; set; }
 
     /// <summary>
     /// 生成日期时间

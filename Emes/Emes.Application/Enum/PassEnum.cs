@@ -1,4 +1,4 @@
-﻿namespace Emes.Application.Enum;
+﻿namespace Emes.Application;
 
 /// <summary>
 /// 过站状态枚举

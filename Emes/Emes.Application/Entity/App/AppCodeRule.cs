@@ -3,8 +3,8 @@
 /// <summary>
 /// 编码生成规则表
 /// </summary>
-[SugarTable("sys_code_rule", "编码生成规则表")]
-public sealed class SysCodeRule : BizEntityBase
+[SugarTable("app_code_rule", "编码生成规则表")]
+public sealed class AppCodeRule : BizEntityBase
 {
     /// <summary>
     /// 规则编码
