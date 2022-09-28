@@ -50,7 +50,7 @@ public sealed class AppDictDataService : IDynamicApiController, ITransient
     {
         var isExist = await _appDictDataRep.IsAnyAsync(u => (u.Code == input.Code || u.Value == input.Value) && u.DictTypeId == input.DictTypeId);
         if (isExist)
-            throw Oops.Oh(BizErrorCodeEnum.D3003);
+            throw Oops.Oh(ErrorCodeEnum.D3003);
 
         await _appDictDataRep.InsertAsync(input.Adapt<AppDictData>());
     }
@@ -65,11 +65,11 @@ public sealed class AppDictDataService : IDynamicApiController, ITransient
     {
         var isExist = await _appDictDataRep.IsAnyAsync(u => u.Id == input.Id);
         if (!isExist) 
-            throw Oops.Oh(BizErrorCodeEnum.D3004);
+            throw Oops.Oh(ErrorCodeEnum.D3004);
 
         isExist = await _appDictDataRep.IsAnyAsync(u => (u.Value == input.Value || u.Code == input.Code) && u.DictTypeId == input.DictTypeId && u.Id != input.Id);
         if (isExist) 
-            throw Oops.Oh(BizErrorCodeEnum.D3003);
+            throw Oops.Oh(ErrorCodeEnum.D3003);
 
         await _appDictDataRep.UpdateAsync(input.Adapt<AppDictData>());
     }
@@ -95,7 +95,7 @@ public sealed class AppDictDataService : IDynamicApiController, ITransient
     {
         var dictData = await _appDictDataRep.GetFirstAsync(u => u.Id == input.Id);
         if (dictData == null)
-            throw Oops.Oh(BizErrorCodeEnum.D3004);
+            throw Oops.Oh(ErrorCodeEnum.D3004);
 
         await _appDictDataRep.DeleteAsync(dictData);
     }
@@ -110,10 +110,10 @@ public sealed class AppDictDataService : IDynamicApiController, ITransient
     {
         var dictData = await _appDictDataRep.GetFirstAsync(u => u.Id == input.Id);
         if (dictData == null)
-            throw Oops.Oh(BizErrorCodeEnum.D3004);
+            throw Oops.Oh(ErrorCodeEnum.D3004);
 
         if (!Enum.IsDefined(typeof(StatusEnum), input.Status))
-            throw Oops.Oh(BizErrorCodeEnum.D3005);
+            throw Oops.Oh(ErrorCodeEnum.D3005);
 
         dictData.Status = (StatusEnum)input.Status;
         await _appDictDataRep.UpdateAsync(dictData);

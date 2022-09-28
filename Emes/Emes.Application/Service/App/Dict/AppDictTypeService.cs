@@ -51,7 +51,7 @@ public sealed class AppDictTypeService : IDynamicApiController, ITransient
     {
         var dictType = await _appDictTypeRep.GetFirstAsync(u => u.Code == input.Code);
         if (dictType == null)
-            throw Oops.Oh(BizErrorCodeEnum.D3000);
+            throw Oops.Oh(ErrorCodeEnum.D3000);
         return await _appDictDataService.GetDictDataListByDictTypeId(dictType.Id);
     }
 
@@ -65,7 +65,7 @@ public sealed class AppDictTypeService : IDynamicApiController, ITransient
     {
         var isExist = await _appDictTypeRep.IsAnyAsync(u => u.Name == input.Name || u.Code == input.Code);
         if (isExist)
-            throw Oops.Oh(BizErrorCodeEnum.D3001);
+            throw Oops.Oh(ErrorCodeEnum.D3001);
 
         await _appDictTypeRep.InsertAsync(input.Adapt<AppDictType>());
     }
@@ -80,11 +80,11 @@ public sealed class AppDictTypeService : IDynamicApiController, ITransient
     {
         var isExist = await _appDictTypeRep.IsAnyAsync(u => u.Id == input.Id);
         if (!isExist)
-            throw Oops.Oh(BizErrorCodeEnum.D3000);
+            throw Oops.Oh(ErrorCodeEnum.D3000);
 
         isExist = await _appDictTypeRep.IsAnyAsync(u => (u.Name == input.Name || u.Code == input.Code) && u.Id != input.Id);
         if (isExist)
-            throw Oops.Oh(BizErrorCodeEnum.D3001);
+            throw Oops.Oh(ErrorCodeEnum.D3001);
 
         await _appDictTypeRep.UpdateAsync(input.Adapt<AppDictType>());
     }
@@ -110,7 +110,7 @@ public sealed class AppDictTypeService : IDynamicApiController, ITransient
     {
         var dictType = await _appDictTypeRep.GetFirstAsync(u => u.Id == input.Id);
         if (dictType == null)
-            throw Oops.Oh(BizErrorCodeEnum.D3000);
+            throw Oops.Oh(ErrorCodeEnum.D3000);
 
         await _appDictTypeRep.DeleteAsync(dictType);
     }
@@ -125,10 +125,10 @@ public sealed class AppDictTypeService : IDynamicApiController, ITransient
     {
         var dictType = await _appDictTypeRep.GetFirstAsync(u => u.Id == input.Id);
         if (dictType == null)
-            throw Oops.Oh(BizErrorCodeEnum.D3000);
+            throw Oops.Oh(ErrorCodeEnum.D3000);
 
         if (!Enum.IsDefined(typeof(StatusEnum), input.Status))
-            throw Oops.Oh(BizErrorCodeEnum.D3005);
+            throw Oops.Oh(ErrorCodeEnum.D3005);
 
         dictType.Status = (StatusEnum)input.Status;
         await _appDictTypeRep.UpdateAsync(dictType);
