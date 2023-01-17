@@ -349,11 +349,24 @@ MigrationBackup/
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
 
+# Other files and folders
+.settings/
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
-Vben2/dist
-yarn.lock
+/wwwroot/Upload
+/wwwroot/Avatar
+/wwwroot/Signature
+/logs
+/*.db
 
-# Exclude
-!Vben2/src/views/sys/admin/log
+# web folders
+dist/
+package-lock.json
