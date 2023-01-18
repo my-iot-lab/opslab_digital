@@ -89,6 +89,7 @@ csharp_style_unused_value_assignment_preference = discard_variable:suggestion
 csharp_style_unused_value_expression_statement_preference = discard_variable:silent
 csharp_space_around_binary_operators = before_and_after
 csharp_indent_labels = one_less_than_current
+csharp_style_prefer_readonly_struct = true:suggestion
 
 [*.vb]
 #### 命名样式 ####
@@ -175,4 +176,4 @@ tab_width = 4
 dotnet_style_operator_placement_when_wrapping = beginning_of_line
 
 # Add copyright file header
-file_header_template = Apache-2.0 License\nCopyright (c) 2021-2022 zuohuaijun\n电话/微信：18020030720  QQ群：87333204
+#file_header_template = Apache-2.0 License\nCopyright (c) 2021-2022 yanggang\n电话/微信：18012345678  QQ群：123456789
