@@ -35,17 +35,27 @@ public sealed class DglMqttClient : IDisposable
     }
 
     /// <summary>
-    /// 链接服务器
+    /// 链接服务器。
     /// </summary>
     /// <param name="cancellationToken"></param>
     /// <returns></returns>
     public async Task ConnectAsync(CancellationToken cancellationToken = default)
     {
-        var mqttClientOptions = new MqttClientOptionsBuilder()
+        var mqttClientOptionsBuilder = new MqttClientOptionsBuilder()
             .WithTcpServer(_mqttOptions.Server, _mqttOptions.Port)
             .WithClientId(_mqttOptions.ClientId)
-            .WithCredentials(_mqttOptions.Username, _mqttOptions.Password)
-            .Build();
+            .WithCredentials(_mqttOptions.Username, _mqttOptions.Password);
+
+        if (string.IsNullOrWhiteSpace(_mqttOptions.Username))
+        {
+            mqttClientOptionsBuilder.WithClientId(_mqttOptions.ClientId);
+        }
+        if (string.IsNullOrWhiteSpace(_mqttOptions.Username))
+        {
+            mqttClientOptionsBuilder.WithCredentials(_mqttOptions.Username, _mqttOptions.Password);
+        }
+
+        var mqttClientOptions = mqttClientOptionsBuilder.Build();
 
         if (OnConnectedAsync != null)
         {
@@ -81,7 +91,7 @@ public sealed class DglMqttClient : IDisposable
     }
 
     /// <summary>
-    /// 订阅
+    /// 订阅。
     /// </summary>
     /// <param name="topics">要订阅的Topic集合</param>
     /// <param name="cancellationToken"></param>
@@ -98,7 +108,23 @@ public sealed class DglMqttClient : IDisposable
     }
 
     /// <summary>
-    /// 发布数据
+    /// 取消订阅。
+    /// </summary>
+    /// <param name="topics">要取消订阅的Topic集合</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task UnSubscribeAsync(string[] topics, CancellationToken cancellationToken = default)
+    {
+        MqttClientUnsubscribeOptionsBuilder mqttUnsubscribeOptionsBuilder = new();
+        foreach (var topic in topics)
+        {
+            mqttUnsubscribeOptionsBuilder.WithTopicFilter(topic);
+        }
+        await _mqttClient.UnsubscribeAsync(mqttUnsubscribeOptionsBuilder.Build(), cancellationToken);
+    }
+
+    /// <summary>
+    /// 发布数据。
     /// </summary>
     /// <param name="topic"></param>
     /// <param name="message"></param>
