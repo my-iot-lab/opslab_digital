@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalLab.PaddleOCR", "src
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{30EB39D9-B15B-4202-8134-F27A22B6A3F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalLab.PaddleOCR.Test", "test\DigitalLab.PaddleOCR.Test\DigitalLab.PaddleOCR.Test.csproj", "{034078AD-6265-4447-A6B7-2CE60C01AF93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,10 @@ Global
 		{98E1A381-0447-420E-8ACF-D1273858C08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98E1A381-0447-420E-8ACF-D1273858C08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98E1A381-0447-420E-8ACF-D1273858C08E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034078AD-6265-4447-A6B7-2CE60C01AF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034078AD-6265-4447-A6B7-2CE60C01AF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034078AD-6265-4447-A6B7-2CE60C01AF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034078AD-6265-4447-A6B7-2CE60C01AF93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -71,6 +77,7 @@ Global
 		{19E9F9D0-A62A-4EF9-ABFD-9925AD38E169} = {C8C96639-48B7-4022-AFB1-DC50DE35DAFE}
 		{98E1A381-0447-420E-8ACF-D1273858C08E} = {C8C96639-48B7-4022-AFB1-DC50DE35DAFE}
 		{30EB39D9-B15B-4202-8134-F27A22B6A3F4} = {76B65006-E9D1-4535-995D-B5208AAC400D}
+		{034078AD-6265-4447-A6B7-2CE60C01AF93} = {2FED86C7-2A99-4A48-830B-2FCFB30225BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5CD801D7-984A-4F5C-8FA2-211B7A5EA9F3}
