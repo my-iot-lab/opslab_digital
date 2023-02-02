@@ -370,3 +370,4 @@ MigrationBackup/
 # web folders
 dist/
 package-lock.json
+!/Web/src/views/system/log/
