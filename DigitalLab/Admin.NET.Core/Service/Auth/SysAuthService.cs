@@ -144,7 +144,8 @@ public class SysAuthService : IDynamicApiController, ITransient
             Os = client.OS.Family + client.OS.Major,
             VisType = LoginTypeEnum.Login,
             Account = user.Account,
-            RealName = user.RealName
+            RealName = user.RealName,
+            TenantId = user.TenantId,
         });
 
         return new LoginUserOutput
@@ -220,7 +221,7 @@ public class SysAuthService : IDynamicApiController, ITransient
     [SuppressMonitor]
     public dynamic GetCaptcha()
     {
-        var codeId = Yitter.IdGenerator.YitIdHelper.NextId();
+        var codeId = YitIdHelper.NextId();
         var captcha = _captcha.Generate(codeId.ToString());
         return new { Id = codeId, Img = captcha.Base64 };
     }

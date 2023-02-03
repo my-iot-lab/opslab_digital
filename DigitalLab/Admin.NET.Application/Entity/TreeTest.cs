@@ -1,5 +1,3 @@
-using Admin.NET.Application.Const;
-
 namespace Admin.NET.Application.Entity;
 
 /// <summary>

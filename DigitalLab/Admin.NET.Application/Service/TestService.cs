@@ -1,4 +1,3 @@
-using Admin.NET.Application.Const;
 using Furion.DatabaseAccessor;
 using Furion.FriendlyException;
 using Furion.Localization;
